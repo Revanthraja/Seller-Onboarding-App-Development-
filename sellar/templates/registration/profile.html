@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>User Profile</h1>
+    <p>User Type : {{user.user_type}}</p>
+    {% if user.user_type == 'manufacturer'%}
+        <p>Company Name: {{ profile.company_name }}</p>
+        <p>Phone number : {{profile.phone_number}}</p>
+       <p>Vendor ID: {{ profile.unique_vendor_id }}</p>
+    {% elif  user.user_type == 'machine_vendor'%}
+        <p>Phone number : {{profile.phone_number}}</p>
+         <p>Vendor ID: {{ profile.unique_vendor_id }}</p>
+    {% elif user.user_type == 'professional_worker' %}
+        <p>Category: {{ profile.category }}</p>
+        <p>Phone number : {{profile.phone_number}}</p>
+         <p>Vendor ID: {{ profile.unique_vendor_id }}</p>
+   {% endif %}
+    <p>Is verified: {% if profile.is_verified %}Yes{% else %}No{% endif %}</p>
+</body>
+</html>
